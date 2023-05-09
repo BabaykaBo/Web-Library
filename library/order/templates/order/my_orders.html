@@ -1,0 +1,23 @@
+{% extends "authentication/base.html" %}
+
+{% block page_header %}
+<p>Books</p>
+{% endblock page_header %}
+
+{% block content %}
+<ul>
+    {% for order in my_orders %}
+        {% if not order.end_at %}
+        <li>
+            <h5>Book: {{ order.book.name }}</h5>
+            <h5>Order created: {{ order.created_at }}</h5>
+            <h5>Order termine ends: {{ order.plated_end_at }}</h5>
+        </li>
+        {% endif %}
+    {% empty %}
+    <li><h3>No orders have been added yet</h3></li>
+    {% endfor %}
+    <li><h3><a class="nav-link" href="{% url 'orders:create_order' %}">Add new order -> </a></h3></li>
+</ul>
+
+{% endblock content %}

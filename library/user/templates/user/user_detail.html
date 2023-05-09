@@ -1,0 +1,29 @@
+{% extends 'authentication/base.html' %}
+
+{% block page_header %}
+<p>User</p>
+{% endblock page_header %}
+
+{% block content %}
+
+<div class="card mb-3">
+    <p class="card-header">Email: {{ user.email }}</p>
+    <p class="card-body">First Name: {{ user.first_name|default:'---' }}</p>
+    <p class="card-body">Middle Name: {{ user.middle_name|default:'---' }}</p>
+    <p class="card-body">Last Name: {{ user.last_name|default:'---' }}</p>
+    <p class="card-body">Registered: {{ user.created_at|default:'---' }}</p>
+    {% if request.user.is_superuser %}
+    <br>
+    <h6>User Books</h6>
+    <ul>
+
+        {% for book in books %}
+            <li><a href="{% url 'books:book_detail' book.id %}">{{ book.name }}</a></li>
+        {% empty %}
+            <li>No books found.</li>
+        {% endfor %}
+    {% endif %}
+    </ul>
+</div>
+<h3><a href="{% url 'user:user_list'%}">Back</a></h3>
+{% endblock content %}

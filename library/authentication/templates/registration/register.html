@@ -1,0 +1,20 @@
+{% extends "authentication/base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+    {% if error %}
+        <h4 class="error">{{ error }}</h4>
+    {% endif %}
+
+<form class="form" action="{% url 'auth:register' %}" method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    {% buttons %}
+    <button name="submit">Register</button>
+    {% endbuttons %}
+    <input type="hidden" name="next" value="{% url 'auth:index' %}">
+</form>
+
+{% endblock content %}

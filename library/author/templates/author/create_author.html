@@ -1,0 +1,22 @@
+{% extends "authentication/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+<h1>Create a new order</h1>
+{% endblock page_header %}
+
+{% block content %}
+{% if error_message %}
+        <p class="error">{{ error_message }}</p>
+    {% endif %}
+
+<form class="form" action="{% url 'authors:create_author' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    {% buttons %}
+    <button name="submit">Create</button>
+    {% endbuttons %}
+    <input type="hidden" name="next" value="{% url 'authors:author_list' %}">
+</form>
+{% endblock content %}

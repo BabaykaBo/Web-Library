@@ -1,0 +1,22 @@
+{% extends "authentication/base.html" %}
+{% load bootstrap4 %}
+
+{% block page_header %}
+<h2>Log in to your account</h2>
+{% endblock page_header %}
+
+{% block content %}
+{% if error %}
+        <h4 class="error">{{ error }}</h4>
+    {% endif %}
+
+<form class="form" action="{% url 'auth:log_in' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% buttons %}
+    <button name="submit">Log in</button>
+    {% endbuttons %}
+    <input type="hidden" name="next" value="{% url 'auth:index' %}">
+</form>
+
+{% endblock content %}

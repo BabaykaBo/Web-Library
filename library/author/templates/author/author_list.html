@@ -1,0 +1,30 @@
+{% extends "authentication/base.html" %}
+
+{% block page_header %}
+<p>All Authors</p>
+{% endblock page_header %}
+
+{% block content %}
+<ul>
+    {% for author in author_list %}
+    <li>
+        <h5>Name: {{ author.name }}</h5>
+        <h5>Surname: {{ author.surname }}</h5>
+        <h5>Patronymic: {{ author.patronymic }}</h5>
+        <br>
+        <h5>Books: </h5>
+        {% for book in author.book_set.all %}
+        <p><a href="{% url 'books:book_detail' book.id %}">{{ book.name }}</a></p>
+        {%empty%}
+        <p><a href="{% url 'authors:delete_author' author.id %}">Delete</a></p>
+        {% endfor %}
+    </li>
+            <br>
+    {% empty %}
+    <li><h5>No authors have been added yet</h5></li>
+    <br>
+    {% endfor %}
+</ul>
+<h3><a class="nav-link" href="{% url 'authors:create_author'%}">Add new author -> </a></h3>
+
+{% endblock content %}

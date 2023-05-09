@@ -1,0 +1,22 @@
+{% extends "authentication/base.html" %}
+
+{% block page_header %}
+<p>Books</p>
+{% endblock page_header %}
+
+{% block content %}
+<form class='form' action="{% url 'books:book_search' %}" method="get">
+    <input name="search" type="search" placeholder="Search...">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+<ul>
+    {% for book in books %}
+    <li>
+        <h3><a href="{% url 'books:book_detail' book.id %}">{{ book.name }}</a></h3>
+    </li>
+    {% empty %}
+    <li><h3>No books have been added yet</h3></li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

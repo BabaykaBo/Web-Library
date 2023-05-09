@@ -1,0 +1,22 @@
+{% extends 'authentication/base.html' %}
+
+{% block page_header %}
+<p>Name: {{ book.name }}</p>
+{% endblock page_header %}
+
+{% block content %}
+
+<div class="card mb-3">
+    <p class="card-header">Count: {{ book.count }}</p>
+    <p class="card-body">{{ book.description|linebreaks }}</p>
+</div>
+<p>Authors:</p>
+  <ul>
+    {% for author in book.authors.all %}
+      <li>{{ author.name }} {{ author.surname }}</li>
+    {% empty %}
+      <li>No authors found.</li>
+    {% endfor %}
+  </ul>
+<h3><a href="{% url 'books:book_list'%}">All Books</a></h3>
+{% endblock content %}

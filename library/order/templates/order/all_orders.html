@@ -1,0 +1,27 @@
+{% extends "authentication/base.html" %}
+
+{% block page_header %}
+<p>All Orders</p>
+{% endblock page_header %}
+
+{% block content %}
+<ul>
+    {% for order in all_orders %}
+    <li>
+        <h5>User: {{ order.user.email }}</h5>
+        <h5>Book: {{ order.book.name }}</h5>
+        <h5>Order created: {{ order.created_at }}</h5>
+        <h5>Order termine ends: {{ order.plated_end_at }}</h5>
+        <h5>Order closed: {{ order.end_at }}</h5>
+        {% if order.end_at is None %}
+        <p><a href="{% url 'orders:close_order' order.id %}">Close</a></p>
+        {% else %}
+        <br>
+        {% endif %}
+    </li>
+    {% empty %}
+    <li><h3>No orders have been added yet</h3></li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

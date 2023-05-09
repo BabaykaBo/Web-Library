@@ -1,0 +1,10 @@
+{% extends "authentication/base.html" %}
+
+{% block page_header %}
+<h1>403 Forbidden</h1>
+{% endblock page_header %}
+
+{% block content %}
+<p>You don't have permission to access this page.</p>
+<a href="{% url 'auth:index' %}">Go back to the main page</a>
+{% endblock content %}
