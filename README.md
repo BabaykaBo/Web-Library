@@ -18,6 +18,7 @@ For my project I used `PostgreSQL` 15.2 version. If you use another database sys
 2. Create the virtual environment
 
 Watch actual version: `https://docs.python.org/3.11/library/venv.html`.
+
 3. Install requirements:
 ```commandline
 pip install -r requirements.txt
