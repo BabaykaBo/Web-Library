@@ -1,5 +1,5 @@
 # Web Library
-This is my Django-based student project from the course. It is the weblibrary application with the base functions like registration, login and loguot, watching books and creating orders, different possibilities for user and admin etc.
+This is my Django-based student project from the course. It is the web library application with the base functions like registration, login and loguot, watching books and creating orders, different possibilities for user and admin etc.
 
 ### Dependencies:
 
